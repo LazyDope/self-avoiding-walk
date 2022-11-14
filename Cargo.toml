@@ -1,0 +1,19 @@
+[package]
+name = "self-avoiding-walk"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+gtk = { version = "0.4.8", package = "gtk4" }
+rand = "0.8.5"
+yaml-rust = "0.4.5"
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+
