@@ -26,14 +26,14 @@ impl Config {
                         min_length: DEFAULT_LENGTH,
                     }
                     .into()),
-                );
-                fc.write_all(&out_str.as_bytes());
+                )?;
+                fc.write_all(&out_str.as_bytes())?;
                 Ok(fc)
             }
             Err(err) => Err(err),
         }?;
         let mut out_str = String::new();
-        config_file.read_to_string(&mut out_str);
+        config_file.read_to_string(&mut out_str)?;
         Ok(YamlLoader::load_from_str(&out_str)?.into())
     }
 
