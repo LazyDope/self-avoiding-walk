@@ -14,7 +14,7 @@ const DEFAULT_LENGTH: i32 = 10;
 
 impl Config {
     pub fn new() -> Result<Config, Box<dyn Error>> {
-        let mut config_file = match File::open("walk-config.yaml") {
+        let config_file = match File::open("walk-config.yaml") {
             Ok(fc) => Ok(fc),
             Err(err) if err.kind() == ErrorKind::NotFound => {
                 let mut fc = File::create("walk-config.yaml")?;
